@@ -1,0 +1,12 @@
+
+Configs
+
+Code pattern = mvc
+state management = bloc
+authentication = firebase
+
+
+sharepref variables (local storage)
+
+userId(type: String) -- for storing user unique id this will determine either the user is sign in or not
+

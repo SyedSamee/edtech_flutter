@@ -2,6 +2,8 @@ import 'package:edtech_flutter/config/firebase_options.dart';
 import 'package:edtech_flutter/config/utils.dart';
 import 'package:edtech_flutter/views/auth/login/login_screen.dart';
 import 'package:edtech_flutter/views/auth/register/register_screen.dart';
+import 'package:edtech_flutter/views/course_player/courseplayer_screen.dart';
+import 'package:edtech_flutter/views/dashboard/dashboard_screen.dart';
 import 'package:edtech_flutter/views/home/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Edtech Flutter',
       theme: Utils().themeData,
-      home: const LoginScreen(),
+      home: const CoursePlayerScreen(),
     );
   }
 }

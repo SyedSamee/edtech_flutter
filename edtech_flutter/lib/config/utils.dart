@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Utils {
   Color primaryColor = Color(0xff77DEFF);
+  Color secColor = Color(0xffF4F3F3);
   ThemeData themeData = ThemeData(
     colorScheme: ColorScheme.fromSeed(
         seedColor:

@@ -1,3 +1,4 @@
+import 'package:edtech_flutter/config/global.dart';
 import 'package:edtech_flutter/config/utils.dart';
 import 'package:edtech_flutter/views/dashboard/widget/dashboard_card.dart';
 import 'package:flutter/foundation.dart';
@@ -14,6 +15,12 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
+    @override
+    void initState() {
+      listenFirebaseUser(context);
+      super.initState();
+    }
+
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(

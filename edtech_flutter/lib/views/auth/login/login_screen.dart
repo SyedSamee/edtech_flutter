@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edtech_flutter/config/global.dart';
 import 'package:edtech_flutter/config/utils.dart';
 import 'package:edtech_flutter/views/auth/login/bloc/login_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   LoginBloc loginBloc = LoginBloc();
+
   @override
   void dispose() {
     email.dispose();
@@ -30,8 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
-          child: SingleChildScrollView(
-        child: Center(
+          child: Center(
+        child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(
               "Wellcome To Login",

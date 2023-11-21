@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LoginController {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   Future loginUser(String email, String password) async {
+    firebaseAuth.currentUser != null ? {firebaseAuth.signOut()} : null;
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     try {
       //Login to firebase with email and password

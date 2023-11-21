@@ -1,3 +1,4 @@
+import 'package:edtech_flutter/config/global.dart';
 import 'package:edtech_flutter/config/utils.dart';
 import 'package:edtech_flutter/views/course_player/widget/bookmark_widget.dart';
 import 'package:edtech_flutter/views/course_player/widget/title_widget.dart';
@@ -12,6 +13,12 @@ class CoursePlayerScreen extends StatefulWidget {
 }
 
 class _CoursePlayerScreenState extends State<CoursePlayerScreen> {
+  @override
+  void initState() {
+    listenFirebaseUser(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;

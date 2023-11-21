@@ -1,3 +1,4 @@
+import 'package:edtech_flutter/config/global.dart';
 import 'package:edtech_flutter/config/utils.dart';
 import 'package:edtech_flutter/views/auth/register/bloc/register_bloc.dart';
 
@@ -17,6 +18,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   RegisterBloc registerBloc = RegisterBloc();
+
   @override
   void dispose() {
     name.dispose();
@@ -32,8 +34,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
-          child: SingleChildScrollView(
-        child: Center(
+          child: Center(
+        child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(
               "Wellcome To Register",

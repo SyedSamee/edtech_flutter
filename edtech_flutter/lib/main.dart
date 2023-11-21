@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Edtech Flutter',
       theme: Utils().themeData,
-      home: const CoursePlayerScreen(),
+      home: const DashboardScreen(),
     );
   }
 }

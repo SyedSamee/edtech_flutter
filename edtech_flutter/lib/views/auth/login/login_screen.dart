@@ -30,98 +30,100 @@ class _LoginScreenState extends State<LoginScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
-          child: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text(
-            "Wellcome To Login",
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
-          ),
-          SizedBox(
-            height: screenHeight * .1,
-          ),
-          Container(
-            width: screenWidth * .8,
-            height: screenHeight * .07,
-            decoration: BoxDecoration(
-                border: Border.all(color: Utils().primaryColor, width: 2),
-                borderRadius: BorderRadius.circular(10)),
-            child: TextField(
-              controller: email,
-              decoration: Utils().defualtInputDecoration("Email"),
+          child: SingleChildScrollView(
+        child: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text(
+              "Wellcome To Login",
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
             ),
-          ),
-          SizedBox(
-            height: screenHeight * .03,
-          ),
-          Container(
-            width: screenWidth * .8,
-            height: screenHeight * .07,
-            decoration: BoxDecoration(
-                border: Border.all(color: Utils().primaryColor, width: 2),
-                borderRadius: BorderRadius.circular(10)),
-            child: TextField(
-              controller: password,
-              obscureText: true,
-              decoration: Utils().defualtInputDecoration(
-                "Password",
+            SizedBox(
+              height: screenHeight * .1,
+            ),
+            Container(
+              width: screenWidth * .8,
+              height: screenHeight * .07,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Utils().primaryColor, width: 2),
+                  borderRadius: BorderRadius.circular(10)),
+              child: TextField(
+                controller: email,
+                decoration: Utils().defualtInputDecoration("Email"),
               ),
             ),
-          ),
-          SizedBox(
-            height: screenHeight * .03,
-          ),
-          BlocConsumer<LoginBloc, LoginState>(
-            bloc: loginBloc,
-            listenWhen: (previous, current) => current is LoginMsgState,
-            listener: (context, state) => {
-              state as LoginMsgState,
-              Utils().defualtMessenger(context, state.msg, state.isError)
-            },
-            buildWhen: (previous, current) =>
-                current is LoginLoadingState || current is LoginInitial,
-            builder: (context, state) {
-              switch (state.runtimeType) {
-                case LoginLoadingState:
-                  {
-                    return Utils().defualtLoadingIndicator();
-                  }
+            SizedBox(
+              height: screenHeight * .03,
+            ),
+            Container(
+              width: screenWidth * .8,
+              height: screenHeight * .07,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Utils().primaryColor, width: 2),
+                  borderRadius: BorderRadius.circular(10)),
+              child: TextField(
+                controller: password,
+                obscureText: true,
+                decoration: Utils().defualtInputDecoration(
+                  "Password",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: screenHeight * .03,
+            ),
+            BlocConsumer<LoginBloc, LoginState>(
+              bloc: loginBloc,
+              listenWhen: (previous, current) => current is LoginMsgState,
+              listener: (context, state) => {
+                state as LoginMsgState,
+                Utils().defualtMessenger(context, state.msg, state.isError)
+              },
+              buildWhen: (previous, current) =>
+                  current is LoginLoadingState || current is LoginInitial,
+              builder: (context, state) {
+                switch (state.runtimeType) {
+                  case LoginLoadingState:
+                    {
+                      return Utils().defualtLoadingIndicator();
+                    }
 
-                case LoginInitial:
-                  {
-                    return GestureDetector(
-                      onTap: () {
-                        loginBloc.add(LoginUser(
-                            email: email.text,
-                            password: password.text,
-                            context: context));
-                      },
-                      child: Container(
-                        width: screenWidth * .4,
-                        height: screenHeight * .07,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Utils().primaryColor,
+                  case LoginInitial:
+                    {
+                      return GestureDetector(
+                        onTap: () {
+                          loginBloc.add(LoginUser(
+                              email: email.text,
+                              password: password.text,
+                              context: context));
+                        },
+                        child: Container(
+                          width: screenWidth * .4,
+                          height: screenHeight * .07,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Utils().primaryColor,
+                          ),
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
+                          ),
                         ),
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white),
-                        ),
-                      ),
-                    );
-                  }
+                      );
+                    }
 
-                default:
-                  {
-                    return SizedBox();
-                  }
-              }
-            },
-          ),
-        ]),
+                  default:
+                    {
+                      return SizedBox();
+                    }
+                }
+              },
+            ),
+          ]),
+        ),
       )),
     );
   }

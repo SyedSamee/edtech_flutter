@@ -18,56 +18,58 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: Center(
-            child: Column(
-          children: [
-            SizedBox(
-              height: screenHeight * .1,
-            ),
-            Text(
-              "Wellcome To Edtech Flutter",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: screenHeight * .25,
-            ),
-            Container(
-              width: screenWidth * .4,
-              height: screenHeight * .07,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Utils().primaryColor,
+        child: SingleChildScrollView(
+          child: Center(
+              child: Column(
+            children: [
+              SizedBox(
+                height: screenHeight * .1,
               ),
-              child: Text(
-                "Login",
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
+              Text(
+                "Wellcome To Edtech Flutter",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               ),
-            ),
-            SizedBox(
-              height: screenHeight * .04,
-            ),
-            Container(
-              width: screenWidth * .4,
-              height: screenHeight * .07,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color(0xff77DEFF),
+              SizedBox(
+                height: screenHeight * .25,
               ),
-              child: Text(
-                "Register",
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
+              Container(
+                width: screenWidth * .4,
+                height: screenHeight * .07,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Utils().primaryColor,
+                ),
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ),
               ),
-            )
-          ],
-        )),
+              SizedBox(
+                height: screenHeight * .04,
+              ),
+              Container(
+                width: screenWidth * .4,
+                height: screenHeight * .07,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xff77DEFF),
+                ),
+                child: Text(
+                  "Register",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ),
+              )
+            ],
+          )),
+        ),
       ),
     );
   }

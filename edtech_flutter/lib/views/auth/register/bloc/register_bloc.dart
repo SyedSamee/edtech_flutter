@@ -7,7 +7,7 @@ import 'package:edtech_flutter/views/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
-
+import 'package:get/get.dart' as _get;
 part 'register_event.dart';
 part 'register_state.dart';
 
@@ -25,15 +25,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         event.password.isNotEmpty) {
       if (event.email.contains("@") && event.email.contains(".com")) {
         var registerResponse = await RegisterController()
-            .registerUser(event.email, event.password);
+            .registerUser(event.name, event.email, event.password);
 
         if (registerResponse == true) {
           // login successfully
-
-          Navigator.pushAndRemoveUntil(
-              event.context,
-              MaterialPageRoute(builder: (context) => DashboardScreen()),
-              (route) => false);
+          _get.Get.offAll(() => DashboardScreen(),
+              transition: _get.Transition.rightToLeft,
+              duration: Duration(milliseconds: 500));
         } else if (registerResponse is String) {
           emit(RegisterInitial());
           emit(RegisterMsgState(msg: registerResponse, isError: true));

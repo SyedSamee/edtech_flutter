@@ -5,6 +5,7 @@ import 'package:edtech_flutter/controllers/auth_controler/login_controller/login
 import 'package:edtech_flutter/views/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:get/get.dart' as _get;
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -24,11 +25,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
         if (LoginResponse == true) {
           // login successfully
-
-          Navigator.pushAndRemoveUntil(
-              event.context,
-              MaterialPageRoute(builder: (context) => DashboardScreen()),
-              (route) => false);
+          _get.Get.offAll(() => DashboardScreen(),
+              transition: _get.Transition.rightToLeft,
+              duration: Duration(milliseconds: 500));
         } else if (LoginResponse is String) {
           emit(LoginInitial());
           emit(LoginMsgState(msg: LoginResponse, isError: true));

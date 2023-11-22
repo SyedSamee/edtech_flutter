@@ -8,6 +8,7 @@ import 'package:edtech_flutter/views/home/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,11 +21,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Edtech Flutter',
       theme: Utils().themeData,
-      home: const DashboardScreen(),
+      home: const CoursePlayerScreen(),
     );
   }
 }

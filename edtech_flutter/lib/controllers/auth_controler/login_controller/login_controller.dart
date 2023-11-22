@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   Future loginUser(String email, String password) async {
     firebaseAuth.currentUser != null ? {firebaseAuth.signOut()} : null;
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();

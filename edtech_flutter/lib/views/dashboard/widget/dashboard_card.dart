@@ -6,11 +6,15 @@ class DashboardCard extends StatelessWidget {
       {super.key,
       required this.screenHeight,
       required this.screenWidth,
-      required this.isEnroll});
+      required this.isEnroll,
+      required this.name,
+      required this.onTap});
 
   final double screenHeight;
   final double screenWidth;
   final bool isEnroll;
+  final String name;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +55,24 @@ class DashboardCard extends StatelessWidget {
                       width: screenWidth * .43,
                       alignment: Alignment.topLeft,
                       child: Text(
-                        "Course 101",
+                        name,
                         style: TextStyle(fontWeight: FontWeight.w500),
                       )),
                   Spacer(),
-                  Container(
-                      height: screenHeight * .044,
-                      color: Utils().primaryColor,
-                      alignment: Alignment.center,
-                      child: Text(
-                        isEnroll ? "Enroll" : "Continue Course",
-                        style: TextStyle(
-                            color: Colors.white,
-                            // decoration: TextDecoration.underline,
-                            fontWeight: FontWeight.w500),
-                      ))
+                  GestureDetector(
+                    onTap: onTap,
+                    child: Container(
+                        height: screenHeight * .044,
+                        color: Utils().primaryColor,
+                        alignment: Alignment.center,
+                        child: Text(
+                          isEnroll ? "Enroll" : "Continue Course",
+                          style: TextStyle(
+                              color: Colors.white,
+                              // decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.w500),
+                        )),
+                  )
                 ]),
               )
             ],

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edtech_flutter/model/dahsboard_course_model.dart';
+import 'package:edtech_flutter/model/dashboard/dahsboard_course_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DashboardController {
@@ -60,6 +60,7 @@ class DashboardController {
 
   Future getEnrolledCourses() async {
     List enrolledCoursesIds = [];
+    List enrolledCourseDocId = [];
     List<DashboardCourseModel> enrolledCourses = [];
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Map<String, dynamic> course = {};
@@ -72,6 +73,8 @@ class DashboardController {
       if (enrolledCoursesResponse.docs.isNotEmpty) {
         //adding all courses to all course list
         for (var e = 0; e < enrolledCoursesResponse.size; e++) {
+          //this enroll doc id will be used for adding course book mark in to the same doc that is why we have added it
+          enrolledCourseDocId.add(enrolledCoursesResponse.docs[e].id);
           enrolledCoursesIds
               .add(enrolledCoursesResponse.docs[e].data()["course_id"]);
         }
@@ -84,7 +87,10 @@ class DashboardController {
           // adding all the enrolled courses to course list
           course = courseResponse.data()!;
           //adding with the id
-          course.addAll({"course_id": enrolledCoursesIds[w]});
+          course.addAll({
+            "course_id": enrolledCoursesIds[w],
+            "doc_id": enrolledCourseDocId[w]
+          });
           enrolledCourses.add(DashboardCourseModel.fromJson(course));
         }
 

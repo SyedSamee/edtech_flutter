@@ -9,12 +9,15 @@ List<DashboardCourseModel> dashboardCourseModelFromjson(String str) =>
 class DashboardCourseModel {
   String name;
   String id;
+  String docId;
   // String img;
 
-  DashboardCourseModel({required this.name, required this.id});
+  DashboardCourseModel(
+      {required this.name, required this.id, required this.docId});
 
   factory DashboardCourseModel.fromJson(Map<String, dynamic> json) =>
-      DashboardCourseModel(name: json["name"], id: json["course_id"]);
+      DashboardCourseModel(
+          name: json["name"], id: json["course_id"], docId: json["doc_id"]);
 
   Map<String, dynamic> toJson() => {"name": name};
 }

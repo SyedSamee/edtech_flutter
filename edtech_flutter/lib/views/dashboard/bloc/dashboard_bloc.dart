@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:edtech_flutter/controllers/dashboard_controller/dashboard_controller.dart';
-import 'package:edtech_flutter/model/dahsboard_course_model.dart';
+import 'package:edtech_flutter/model/dashboard/dahsboard_course_model.dart';
 import 'package:edtech_flutter/views/course_player/courseplayer_screen.dart';
 import 'package:meta/meta.dart';
 import 'package:get/get.dart' as _get;

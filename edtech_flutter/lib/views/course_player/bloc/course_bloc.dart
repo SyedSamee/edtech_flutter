@@ -42,6 +42,7 @@ class CoursePlayerBloc extends Bloc<CoursePlayerEvent, CoursePlayerState> {
 
   FutureOr<void> coursePlayerBookmarkEvent(
       CoursePlayerBookmarkEvent event, Emitter<CoursePlayerState> emit) async {
+    emit(CoursePlayerInitial());
     var bookmarkResponse = await CoursePlayerController()
         .bookmarkDuration(event.docId, event.bookmarkDuration);
 

@@ -140,14 +140,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         thumbnail: state
                                             .enrolledCourses[index].thumbnail,
                                         onTap: () {
-                                          dashboardBloc
-                                              .add(DashboardContinueCourse(
+                                          dashboardBloc.add(
+                                              DashboardContinueCourse(
                                                   docId: state
                                                       .enrolledCourses[index]
                                                       .docId!,
-                                                  videoUrl: state
+                                                  videoUrl:
+                                                      state
+                                                          .enrolledCourses[
+                                                              index]
+                                                          .video_url,
+                                                  name: state
                                                       .enrolledCourses[index]
-                                                      .video_url));
+                                                      .name));
                                         },
                                       );
                                     }),

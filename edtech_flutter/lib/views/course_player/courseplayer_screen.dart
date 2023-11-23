@@ -15,9 +15,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CoursePlayerScreen extends StatefulWidget {
   final String video_url;
   final String docId;
+  final String name;
 
   const CoursePlayerScreen(
-      {super.key, required this.docId, required this.video_url});
+      {super.key,
+      required this.docId,
+      required this.video_url,
+      required this.name});
 
   @override
   State<CoursePlayerScreen> createState() => _CoursePlayerScreenState();
@@ -93,14 +97,14 @@ class _CoursePlayerScreenState extends State<CoursePlayerScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Course 101",
+                                    widget.name,
                                     style: TextStyle(fontSize: 17),
                                   ),
                                   IconButton(
                                       onPressed: () {
                                         coursePlayerBloc.add(
                                             CoursePlayerBookmarkEvent(
-                                                docId: "PKgpvf6jWw9jMlOI0o9s",
+                                                docId: widget.docId,
                                                 bookmarkDuration:
                                                     videoCurrentDuration!
                                                         .durationFormat,

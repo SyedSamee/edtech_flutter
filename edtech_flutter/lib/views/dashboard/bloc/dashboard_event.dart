@@ -14,5 +14,8 @@ class DashboardEnrollCourseEvent extends DashboardEvent {
 class DashboardContinueCourse extends DashboardEvent {
   final String docId;
   final String videoUrl;
-  DashboardContinueCourse({required this.docId, required this.videoUrl});
+  final String name;
+
+  DashboardContinueCourse(
+      {required this.docId, required this.videoUrl, required this.name});
 }

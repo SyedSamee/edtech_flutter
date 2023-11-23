@@ -98,6 +98,7 @@ class DashboardController {
         return enrolledCourses;
       }
     } catch (e) {
+      print(e);
       return e is FirebaseException ? e.message : e;
     }
   }

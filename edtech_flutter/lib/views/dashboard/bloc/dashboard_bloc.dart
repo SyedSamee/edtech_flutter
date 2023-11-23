@@ -55,7 +55,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   FutureOr<void> dashboardContinueCourse(
       DashboardContinueCourse event, Emitter<DashboardState> emit) {
     _get.Get.to(
-        CoursePlayerScreen(docId: event.docId, video_url: event.videoUrl),
+        CoursePlayerScreen(
+            docId: event.docId, video_url: event.videoUrl, name: event.name),
         transition: _get.Transition.rightToLeft,
         duration: Duration(milliseconds: 500));
   }

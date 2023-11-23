@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:edtech_flutter/controllers/dashboard_controller/dashboard_controller.dart';
 import 'package:edtech_flutter/model/dashboard/dahsboard_course_model.dart';
 import 'package:edtech_flutter/views/course_player/courseplayer_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:get/get.dart' as _get;
 part 'dashboard_event.dart';
@@ -53,7 +54,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   FutureOr<void> dashboardContinueCourse(
       DashboardContinueCourse event, Emitter<DashboardState> emit) {
-    _get.Get.to(CoursePlayerScreen(),
+    _get.Get.to(
+        CoursePlayerScreen(docId: event.docId, video_url: event.videoUrl),
         transition: _get.Transition.rightToLeft,
         duration: Duration(milliseconds: 500));
   }

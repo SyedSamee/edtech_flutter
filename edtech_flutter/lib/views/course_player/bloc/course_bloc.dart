@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:edtech_flutter/controllers/course_player_controller/course_player_controller.dart';
+import 'package:edtech_flutter/views/dashboard/dashboard_screen.dart';
 import 'package:meta/meta.dart';
-
+import 'package:get/get.dart' as _get;
 part 'course_event.dart';
 part 'course_state.dart';
 
@@ -13,6 +14,7 @@ class CoursePlayerBloc extends Bloc<CoursePlayerEvent, CoursePlayerState> {
     on<CoursePlayerVideoEvent>(coursePlayerVideoEvent);
     on<CoursePlayerBookmarkEvent>(coursePlayerBookmarkEvent);
     on<CoursePlayerGetAllBookmarksEvent>(coursePlayerGetAllBookmarks);
+    on<CoursePlayerClaimCertificateEvent>(coursePlayerClaimCertificateEvent);
   }
 
   FutureOr<void> coursePlayerVideoEvent(
@@ -52,5 +54,13 @@ class CoursePlayerBloc extends Bloc<CoursePlayerEvent, CoursePlayerState> {
     } else {
       emit(CoursePlayerMsgState(isError: true, msg: "Something went wrong"));
     }
+  }
+
+  FutureOr<void> coursePlayerClaimCertificateEvent(
+      CoursePlayerClaimCertificateEvent event,
+      Emitter<CoursePlayerState> emit) {
+    _get.Get.offAll(DashboardScreen(),
+        transition: _get.Transition.rightToLeft,
+        duration: Duration(milliseconds: 500));
   }
 }

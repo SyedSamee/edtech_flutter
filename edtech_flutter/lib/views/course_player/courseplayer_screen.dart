@@ -13,7 +13,11 @@ import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CoursePlayerScreen extends StatefulWidget {
-  const CoursePlayerScreen({super.key});
+  final String video_url;
+  final String docId;
+
+  const CoursePlayerScreen(
+      {super.key, required this.docId, required this.video_url});
 
   @override
   State<CoursePlayerScreen> createState() => _CoursePlayerScreenState();
@@ -23,6 +27,7 @@ class _CoursePlayerScreenState extends State<CoursePlayerScreen> {
   CustomVideoPlayerController? _customvideoPlayerController;
   Duration? videoCurrentDuration;
   CoursePlayerBloc coursePlayerBloc = CoursePlayerBloc();
+  bool isVideoCompleted = false;
   @override
   void initState() {
     initializeVideoPlayer();
@@ -145,18 +150,45 @@ class _CoursePlayerScreenState extends State<CoursePlayerScreen> {
 
   initializeVideoPlayer() async {
     VideoPlayerController videoPlayerController;
-    videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(
-        "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4"))
-      ..initialize().then((value) => {
-            coursePlayerBloc.add(
-              CoursePlayerVideoEvent(
-                  coursePlayerBloc: coursePlayerBloc,
-                  docId: "PKgpvf6jWw9jMlOI0o9s"),
-            )
-          });
+    videoPlayerController =
+        VideoPlayerController.networkUrl(Uri.parse(widget.video_url))
+          ..initialize().then((value) => {
+                coursePlayerBloc.add(
+                  CoursePlayerVideoEvent(
+                      coursePlayerBloc: coursePlayerBloc, docId: widget.docId),
+                )
+              });
 
     videoPlayerController.addListener(() {
       videoCurrentDuration = videoPlayerController.value.position;
+      if (videoPlayerController.value.duration ==
+              videoPlayerController.value.position &&
+          isVideoCompleted == false) {
+        // show a alert box
+        isVideoCompleted = true;
+        showDialog(
+          context: context,
+          builder: (context) => GestureDetector(
+            onTap: () {},
+            child: WillPopScope(
+              onWillPop: () async {
+                return false;
+              },
+              child: AlertDialog(actions: [
+                Container(
+                  alignment: Alignment.center,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        coursePlayerBloc
+                            .add(CoursePlayerClaimCertificateEvent());
+                      },
+                      child: Text("Claim Your Certificate")),
+                )
+              ]),
+            ),
+          ),
+        );
+      }
     });
 
     _customvideoPlayerController = CustomVideoPlayerController(

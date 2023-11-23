@@ -22,10 +22,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Edtech Flutter',
-      theme: Utils().themeData,
-      home: const CoursePlayerScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Edtech Flutter',
+        theme: Utils().themeData,
+        home: const DashboardScreen());
   }
 }

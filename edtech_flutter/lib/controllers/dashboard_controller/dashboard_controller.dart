@@ -85,12 +85,13 @@ class DashboardController {
               .doc(enrolledCoursesIds[w])
               .get();
           // adding all the enrolled courses to course list
-          course = courseResponse.data()!;
+          course = courseResponse.data() == null ? {} : courseResponse.data()!;
           //adding with the id
           course.addAll({
             "course_id": enrolledCoursesIds[w],
             "doc_id": enrolledCourseDocId[w]
           });
+
           enrolledCourses.add(DashboardCourseModel.fromJson(course));
         }
 
@@ -110,7 +111,6 @@ class DashboardController {
         .add({"course_id": id});
     if (enrolledCoursesResponse.id != null) {
       return true;
-      //uploaded sucessfully
     } else {
       return "Something went wrong";
     }

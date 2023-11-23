@@ -8,12 +8,14 @@ class DashboardCard extends StatelessWidget {
       required this.screenWidth,
       required this.isEnroll,
       required this.name,
+      required this.thumbnail,
       required this.onTap});
 
   final double screenHeight;
   final double screenWidth;
   final bool isEnroll;
   final String name;
+  final String thumbnail;
   final Function() onTap;
 
   @override
@@ -43,9 +45,7 @@ class DashboardCard extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.black,
                         image: DecorationImage(
-                            image: NetworkImage(
-                                "https://img.freepik.com/premium-psd/youtube-video-thumbnail-start-trading-today_475351-168.jpg?w=2000"),
-                            fit: BoxFit.fill),
+                            image: NetworkImage(thumbnail), fit: BoxFit.fill),
                         borderRadius: BorderRadius.circular(10)),
                   ),
                   SizedBox(

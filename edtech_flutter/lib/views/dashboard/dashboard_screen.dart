@@ -96,6 +96,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         screenWidth: screenWidth,
                                         isEnroll: true,
                                         name: state.allCourses[index].name,
+                                        thumbnail:
+                                            state.allCourses[index].thumbnail,
                                         onTap: () {
                                           dashboardBloc.add(
                                               DashboardEnrollCourseEvent(
@@ -135,9 +137,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         screenWidth: screenWidth,
                                         isEnroll: false,
                                         name: state.enrolledCourses[index].name,
+                                        thumbnail: state
+                                            .enrolledCourses[index].thumbnail,
                                         onTap: () {
                                           dashboardBloc
-                                              .add(DashboardContinueCourse());
+                                              .add(DashboardContinueCourse(
+                                                  docId: state
+                                                      .enrolledCourses[index]
+                                                      .docId!,
+                                                  videoUrl: state
+                                                      .enrolledCourses[index]
+                                                      .video_url));
                                         },
                                       );
                                     }),

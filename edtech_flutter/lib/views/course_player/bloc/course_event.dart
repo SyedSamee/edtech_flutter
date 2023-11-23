@@ -26,3 +26,5 @@ class CoursePlayerGetAllBookmarksEvent extends CoursePlayerEvent {
     required this.docId,
   });
 }
+
+class CoursePlayerClaimCertificateEvent extends CoursePlayerEvent {}

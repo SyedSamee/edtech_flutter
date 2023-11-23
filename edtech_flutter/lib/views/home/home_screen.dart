@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   HomeBloc homeBloc = HomeBloc();
   @override
   void initState() {
-    // homeBloc.add(HomeLoginChecker(context: context));
+    homeBloc.add(HomeLoginChecker());
     listenFirebaseUser(context);
     super.initState();
   }

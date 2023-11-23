@@ -14,6 +14,7 @@ class RegisterController {
           email: email, password: password);
 
       if (registerResponse.user != null) {
+        //this will be used for firebase
         sharedPreferences.setString("userId", registerResponse.user!.uid);
         await firebaseFirestore
             .collection("users")

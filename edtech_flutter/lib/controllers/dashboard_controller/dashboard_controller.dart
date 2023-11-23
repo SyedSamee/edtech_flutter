@@ -86,7 +86,8 @@ class DashboardController {
               .get();
           // adding all the enrolled courses to course list
           course = courseResponse.data() == null ? {} : courseResponse.data()!;
-          //adding with the id
+          //adding with the course id and doc id
+          //doc id is required to send bookmark detail to add bookmarks into enroll collectio
           course.addAll({
             "course_id": enrolledCoursesIds[w],
             "doc_id": enrolledCourseDocId[w]
@@ -96,9 +97,10 @@ class DashboardController {
         }
 
         return enrolledCourses;
+      } else {
+        return enrolledCourses;
       }
     } catch (e) {
-      print(e);
       return e is FirebaseException ? e.message : e;
     }
   }

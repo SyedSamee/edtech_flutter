@@ -121,6 +121,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                           ),
                           Container(
+                            alignment: Alignment.center,
                             height: screenHeight * .35,
                             child: state.enrolledCourses.length == 0
                                 ? Text(

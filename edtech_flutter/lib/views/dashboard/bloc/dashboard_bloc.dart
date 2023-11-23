@@ -23,7 +23,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     emit(DashboardLoadingState());
     var allCourseResponse = await DashboardController().getAllCourses();
     var enrollCourseResponse = await DashboardController().getEnrolledCourses();
-
+    print(enrollCourseResponse);
     if (allCourseResponse is List<DashboardCourseModel> &&
         enrollCourseResponse is List<DashboardCourseModel>) {
       emit(DashboardInitialState(

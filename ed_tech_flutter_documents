@@ -5,7 +5,8 @@ Code pattern = mvc
 routing = get
 state management = bloc
 authentication = firebase
-
+video player = appinio_video_player
+shared_preferences = for local storage
 
 shared_preferences variables (local storage)
 

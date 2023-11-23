@@ -40,6 +40,7 @@ class CoursePlayerController {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     List booksmarks = [];
     try {
+      //getting bookmarks from firebase
       var enrolledCourseData = await firestore
           .collection("users")
           .doc(sharedPreferences.getString("userId"))
@@ -47,6 +48,7 @@ class CoursePlayerController {
           .doc(docId)
           .get();
       if (enrolledCourseData.exists) {
+        //adding it to list
         booksmarks = enrolledCourseData.data()?["bookmarks"] == null
             ? []
             : enrolledCourseData.data()!["bookmarks"] as List;
